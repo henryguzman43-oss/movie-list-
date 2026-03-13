@@ -27,7 +27,7 @@ if (localStorage.getItem("datalist")) {
     }
   };
 
-  xhttp.open("GET", "gameData.json", true);
+  xhttp.open("GET", "list.json", true);
   xhttp.send();
 }
 
@@ -40,9 +40,10 @@ function makeCards() {
     card.classList.add("card");
 
     let textData =
-      "<div class='game-title'>" + game.title + "</div>" +
-      "<div>Publisher: " + game.publisher + "</div>" +
-      "<div>Release Date: " + game.releaseDate + "</div>";
+      "<div class='game-title'><strong>" + game.title + "</strong></div> <br>" +
+      "<div><strong>Description:</strong> " + game.extract + "</div><br>" +
+      "<div><strong>Genre:</strong> " + game.genres.join(", ") + "</div><br><img src='" + game.thumbnail + "' alt='Game image'>";
+      
 
     card.innerHTML = textData;
     grid.appendChild(card);
@@ -50,4 +51,3 @@ function makeCards() {
 
   console.log("cards refreshed");
 }
-
